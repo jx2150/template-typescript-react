@@ -6,7 +6,7 @@ import LaunchProfile from './components/LaunchProfile';
 
 const App = () => {
   const [id, setId] = React.useState(42);
-  const [sort, setSort] = React.useState('launch_success');
+  const [sort, setSort] = React.useState('launch_year');
   const [order, setOrder] = React.useState('asc');
   const handleIdChange = React.useCallback(newId => {
     setId(newId);
