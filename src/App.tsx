@@ -1,26 +1,31 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import LaunchList from './components/LaunchList';
+import LaunchProfile from './components/LaunchProfile';
 
-function App() {
+const App = () => {
+  const [id, setId] = React.useState(42);
+  const [sort, setSort] = React.useState('launch_success');
+  const [order, setOrder] = React.useState('asc');
+  const handleIdChange = React.useCallback(newId => {
+    setId(newId);
+  }, []);
+  const handleSortChange = React.useCallback(sort => {
+    setSort(sort);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LaunchList
+        activeId={id}
+        activeSort={sort}
+        handleIdChange={handleIdChange}
+        activeOrder={order}
+      />
+      <LaunchProfile id={id} />
     </div>
   );
-}
+};
 
 export default App;
